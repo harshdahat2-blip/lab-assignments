@@ -1,0 +1,23 @@
+# Copy python file without comments
+
+src = input("Enter source file: ")
+dest = input("Enter destination file: ")
+
+f1 = open(src, "r")
+f2 = open(dest, "w")
+
+for line in f1:
+    if not line.strip().startswith("#"):
+        f2.write(line)
+
+f1.close()
+f2.close()
+
+print("File copied without comments!")
+
+# Display both files
+print("\nSource File Content:")
+print(open(src).read())
+
+print("\nDestination File Content:")
+print(open(dest).read())
