@@ -1,0 +1,54 @@
+class Book:
+    def __init__(self, title):
+        self.title = title
+        self.available = True
+
+class Member:
+    def __init__(self, name):
+        self.name = name
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, title):
+        self.books.append(Book(title))
+        print("Book added!")
+
+    def lend_book(self, title):
+        for b in self.books:
+            if b.title == title and b.available:
+                b.available = False
+                print("Book issued!")
+                return
+        print("Book not available!")
+
+    def return_book(self, title):
+        for b in self.books:
+            if b.title == title:
+                b.available = True
+                print("Book returned!")
+                return
+
+    def display_books(self):
+        for b in self.books:
+            status = "Available" if b.available else "Issued"
+            print(b.title, "-", status)
+
+# Menu
+lib = Library()
+
+while True:
+    print("\n1.Add Book 2.Lend Book 3.Return Book 4.Display 5.Exit")
+    ch = int(input("Enter choice: "))
+
+    if ch == 1:
+        lib.add_book(input("Enter title: "))
+    elif ch == 2:
+        lib.lend_book(input("Enter title: "))
+    elif ch == 3:
+        lib.return_book(input("Enter title: "))
+    elif ch == 4:
+        lib.display_books()
+    else:
+        break

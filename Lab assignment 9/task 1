@@ -1,0 +1,32 @@
+class Employee:
+    def get_data(self):
+        self.name = input("Enter Name: ")
+        self.age = int(input("Enter Age: "))
+        self.salary = float(input("Enter Salary: "))
+
+    def display(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Salary:", self.salary)
+
+class Manager(Employee):
+    def get_manager_data(self):
+        self.department = input("Enter Department: ")
+
+    def display_manager(self):
+        self.display()
+        print("Department:", self.department)
+
+# Process 10 managers
+managers = []
+
+for i in range(2):   # change to 10 in exam
+    print("\nEnter details of Manager", i+1)
+    m = Manager()
+    m.get_data()
+    m.get_manager_data()
+    managers.append(m)
+
+print("\nManager Details:")
+for m in managers:
+    m.display_manager()
