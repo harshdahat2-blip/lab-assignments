@@ -1,0 +1,24 @@
+import pandas as pd
+
+data = {
+    "State": ["Maharashtra", "Gujarat", "Rajasthan", "UP", "MP"],
+    "Area": [307713, 196244, 342239, 243286, 308245],
+    "Population": [112374333, 60439692, 68548437, 199812341, 72626809]
+}
+
+df = pd.DataFrame(data)
+
+# a) Display all
+print(df)
+
+# b) Largest area
+print(df[df['Area'] == df['Area'].max()]['State'])
+
+# c) Largest population
+print(df[df['Population'] == df['Population'].max()]['State'])
+
+# d) Population Density
+df['Density'] = df['Population'] / df['Area']
+
+# e) Highest density
+print(df[df['Density'] == df['Density'].max()]['State'])

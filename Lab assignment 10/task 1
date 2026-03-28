@@ -1,0 +1,24 @@
+import pandas as pd
+
+df = pd.read_csv("books.csv")
+
+# a) Tabular form
+print(df)
+
+# b) Books of given author
+author = input("Enter author: ")
+print(df[df['author'] == author])
+
+# c) Books by publishing house
+pub = input("Enter publisher: ")
+print(df[df['publisher'] == pub])
+
+# d) Cheapest & Costliest book
+print("Cheapest Book:")
+print(df[df['price'] == df['price'].min()])
+
+print("Costliest Book:")
+print(df[df['price'] == df['price'].max()])
+
+# e) Sort by year
+print(df.sort_values(by='year'))
