@@ -1,0 +1,50 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset (make sure file is in same folder)
+df = pd.read_csv("sales_data.csv")
+
+# a) Total profit of all months (Line Plot)
+plt.figure()
+plt.plot(df['month_number'], df['total_profit'], marker='o')
+plt.title("Total Profit per Month")
+plt.xlabel("Month")
+plt.ylabel("Profit")
+plt.grid()
+plt.show()
+
+# b) All product sales (Multiline Plot)
+plt.figure()
+plt.plot(df['month_number'], df['facecream'], label='Face Cream')
+plt.plot(df['month_number'], df['facewash'], label='Face Wash')
+plt.plot(df['month_number'], df['toothpaste'], label='Toothpaste')
+plt.plot(df['month_number'], df['bathingsoap'], label='Bathing Soap')
+plt.plot(df['month_number'], df['shampoo'], label='Shampoo')
+plt.plot(df['month_number'], df['moisturizer'], label='Moisturizer')
+
+plt.legend()
+plt.title("Product Sales Data")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.show()
+
+# c) Face cream & face wash (Bar Chart)
+plt.figure()
+width = 0.4
+plt.bar(df['month_number'], df['facecream'], width=width, label='Face Cream')
+plt.bar(df['month_number'] + width, df['facewash'], width=width, label='Face Wash')
+
+plt.legend()
+plt.title("Face Cream vs Face Wash Sales")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.show()
+
+# d) Total yearly sales (Pie Chart)
+products = ['facecream', 'facewash', 'toothpaste', 'bathingsoap', 'shampoo', 'moisturizer']
+total_sales = [df[p].sum() for p in products]
+
+plt.figure()
+plt.pie(total_sales, labels=products, autopct='%1.1f%%')
+plt.title("Total Sales Distribution")
+plt.show()
