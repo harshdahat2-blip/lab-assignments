@@ -1,0 +1,20 @@
+# vendor_annual_report.py
+
+name = input("Vendor Name: ")
+year = input("Year of Association: ")
+contact = input("Contact Number: ")
+email = input("Email ID: ")
+
+total = 0
+print("\nEnter monthly purchase amounts:")
+
+for i in range(1, 13):
+    amount = float(input(f"Month {i}: "))
+    total += amount
+
+print("\n--- Vendor Annual Report ---")
+print("Vendor Name:", name)
+print("Year of Association:", year)
+print("Contact:", contact)
+print("Email:", email)
+print("Annual Purchase Amount:", total)
